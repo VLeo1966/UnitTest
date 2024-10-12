@@ -1,5 +1,5 @@
 import unittest
-from main import add, subtract, multiply, divide, check
+from main import add, subtract, multiply, divide, mod, check
 
 class TestMath(unittest.TestCase):
     def test_add(self):
@@ -18,6 +18,12 @@ class TestMath(unittest.TestCase):
         self.assertNotEqual(divide(4, 2), 3)
         self.assertEqual(divide(20, 5), 4)
 
+    def test_mod(self):
+        self.assertEqual(mod(10, 3), 1)
+        self.assertEqual(mod(7, 5), 2)
+        self.assertEqual(mod(100, 10), 0)
+        self.assertRaises(ValueError, mod, 5, 0)
+
 class TestDivide(unittest.TestCase):
     def test_divide_success(self):
         self.assertEqual(divide(10, 2), 5)
@@ -27,6 +33,13 @@ class TestDivide(unittest.TestCase):
     def test_divide_by_zero(self):
         self.assertRaises(ValueError, divide, 6, 0)
 
+class TestMod(unittest.TestCase):
+    def test_mod_success(self):
+        self.assertEqual(mod(10, 2), 0)
+        self.assertEqual(mod(9, 4), 1)
+
+    def test_mod_by_zero(self):
+        self.assertRaises(ValueError, mod, 7, 0)
 
 class TestCheck(unittest.TestCase):
     def test_check(self):
