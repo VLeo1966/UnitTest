@@ -11,7 +11,9 @@ def multiply(a, b):
 
 
 def divide(a, b):
-    return a / b
+   if b == 0:
+       raise ValueError('На ноль делить нельзя')
+   return a / b
 
 
 def check(number):
